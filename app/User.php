@@ -19,7 +19,7 @@ class User extends CommonModel{
 	
 	public static function loginRoleMsg(){
 	    return [
-	        'name.required' => '请输入手机号',
+	        'name.required' => '请输入用户名',
 	        'name.exists' => '用户名不存在',
 	        'password.required' => '请输入密码'
 	    ];

@@ -1,7 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
-use AuthAdmin;
+use AuthUser;
 use Route;
 class HomeMiddleware {
 
@@ -16,7 +16,7 @@ class HomeMiddleware {
 	{
 	    $route = Route::currentRouteName();
 
-	    if(!AuthAdmin::check()){
+	    if(!AuthUser::check()){
 	        if($route != 'login' && $route != 'doLogin'){
 	            return redirect('home/login');
 	        }

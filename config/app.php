@@ -195,7 +195,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 	    'Hp'      => 'Illuminate\Support\Facades\Hp',
-	    'AuthAdmin'      => 'Illuminate\Support\Facades\AuthUser',
+	    'AuthUser'      => 'Illuminate\Support\Facades\AuthUser',
 	],
 
 ];

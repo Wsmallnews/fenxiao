@@ -20,7 +20,7 @@ form label {color:#000000;}
 </head>
 
 <body>
-<h1>欢迎来到 {{$web_name}} 会员管理系统</h1>
+<h1>欢迎来到 {{$l_web['web_name']}} 会员管理系统</h1>
 
 <div class="login">
     <div class="bg"></div>
@@ -45,7 +45,7 @@ form label {color:#000000;}
 		                <div class="uinArea" id="uinArea">
 		                	<label class="input-tips" for="u">帐号：</label>
 			                <div class="inputOuter" id="uArea">
-			                    <input type="text" id="u" name="phone" class="inputstyle" value="{{ old('name') }}" />
+			                    <input type="text" id="u" name="name" class="inputstyle" value="{{ old('name') }}" />
 			                </div>
 		                </div>
 		                <div class="pwdArea" id="pwdArea">
@@ -62,7 +62,7 @@ form label {color:#000000;}
        <!--登录end-->
   	</div>
 </div>
-<div class="jianyi">{{$web_name}} 官方网站</div>
+<div class="jianyi">{{$l_web['web_name']}} 官方网站</div>
 
 <script type="text/javascript">
 

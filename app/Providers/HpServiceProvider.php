@@ -1,7 +1,7 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use View;
 class HpServiceProvider extends ServiceProvider {
 
 	/**
@@ -11,7 +11,11 @@ class HpServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+		//所有视图共享数据
+	    View::share('l_web', [
+	       'web_name' => '123'
+	       ]
+	    );
 	}
 
 	/**

@@ -1,9 +1,11 @@
 <?php 
 namespace App\Http\Controllers\home;
 
-// use Illuminate\Support\Facades\DB;
-// use Illuminate\Database\Eloquent\Model;
 use App\User;
+use Request;
+use Validator;
+use Redirect;
+use AuthUser;
 
 class IndexController extends CommonController {
 
@@ -49,13 +51,13 @@ class IndexController extends CommonController {
 
         $data = Request::all();
         
-        $validate = Validator::make($data,Admin::loginRole(),Admin::loginRoleMsg());
+        $validate = Validator::make($data,User::loginRole(),User::loginRoleMsg());
         
         if($validate->fails()){
             return Redirect::back()->withErrors($validate);
         }
         
-        if (AuthAdmin::attempt($data)){
+        if (AuthUser::attempt($data)){
             return redirect()->intended('home/index');
         }else{
             return Redirect::back()->withInput(Request::except('password'))->withErrors('密码错误');
@@ -65,7 +67,7 @@ class IndexController extends CommonController {
     //登出
 	public function getLogout()
 	{
-	    AuthAdmin::logout();
+	    AuthUser::logout();
 	    return redirect('home/');
 	}
 

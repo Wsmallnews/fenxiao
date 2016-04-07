@@ -1,7 +1,7 @@
 <?php namespace App\Services;
 
 use Illuminate\Contracts\AuthUser\AuthUser as AuthUserContract;
-use App\Admin;
+use App\User;
 use Session;
 use Hash;
 class AuthUser implements AuthUserContract {
