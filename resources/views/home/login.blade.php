@@ -1,8 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    @include('home.includes.load')
+    <meta name="description" content="">
+    <meta name="author" content="">
 <title>会员管理系统</title>
-@include('home.includes.load')
 <link href="{{ asset('/home/css/login2.css') }}" rel="stylesheet" type="text/css" />
 <style type="text/css" >
 .login_msg{border:2px solid #FB3304;width:auto;height:25px;background:#F5BCAE;position:absolute;left:48px;top:6px;border-radius:5px;color:#FFFFFF;padding:0 5px;line-height:25px;font-size:14px;}

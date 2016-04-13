@@ -13,8 +13,9 @@ class AuthUser implements AuthUserContract {
 	    
 	    unset($data['password'],$data['_token']);
 
+	    $data['name'] = trim($data['name']);
 	    $result = User::where($data)->first();
-	    
+
 	    if(Hash::check($password,$result['password'])){
 	        $this->setSession($result->id);
 	        return true;
@@ -31,7 +32,7 @@ class AuthUser implements AuthUserContract {
 	    return false;
 	}
 	
-	//保存管理员信息
+	//保存用户信息
 	public function setSession($id){
 	    Session::put('laravel_user_id',$id);
 	}

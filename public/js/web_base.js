@@ -12,10 +12,10 @@ var l = {
 			error:function(){}
 		}
 
-		$J.extend(defaults, params);
+		$.extend(defaults, params);
 
 		defaults['data']['timeStamp'] = (new Date()).getTime();
 
-		$J.ajax(defaults);
+		$.ajax(defaults);
 	}
 }

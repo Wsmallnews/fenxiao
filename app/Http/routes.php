@@ -20,8 +20,14 @@ Route::group(['prefix' => 'home', 'namespace' => 'home'], function()
     
     Route::match(['get','post'],'login', array('as' => 'login','uses' => 'IndexController@login'));
     Route::post('doLogin', array('as' => 'doLogin','uses' => 'IndexController@doLogin'));
+    Route::get('logout', 'IndexController@getLogout');
     Route::get('/', 'IndexController@index');
     Route::get('index', 'IndexController@index');
+    
+    Route::get('userList', 'UserController@lists');
+    Route::get('userAdd', 'UserController@add');
+    Route::post('userDoAdd', 'UserController@doAdd');
+    
 });
 
 
