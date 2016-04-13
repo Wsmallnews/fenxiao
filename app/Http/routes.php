@@ -22,6 +22,29 @@ Route::group(['prefix' => 'home', 'namespace' => 'home'], function()
     Route::post('doLogin', array('as' => 'doLogin','uses' => 'IndexController@doLogin'));
     Route::get('/', 'IndexController@index');
     Route::get('index', 'IndexController@index');
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    Route::get('createGive', 'InviteCodeController@createGive');
+    Route::get('inviLists', 'InviteCodeController@lists');
+    
 });
 
 
