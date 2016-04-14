@@ -24,9 +24,33 @@ Route::group(['prefix' => 'home', 'namespace' => 'home'], function()
     Route::get('/', 'IndexController@index');
     Route::get('index', 'IndexController@index');
     
+
     Route::get('userList', 'UserController@lists');
     Route::get('userAdd', 'UserController@add');
     Route::post('userDoAdd', 'UserController@doAdd');
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    Route::get('createGive', 'InviteCodeController@createGive');
+    Route::get('inviLists', 'InviteCodeController@lists');
+
     
 });
 
