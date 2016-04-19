@@ -50,6 +50,12 @@ Route::group(['prefix' => 'home', 'namespace' => 'home'], function()
     
     Route::get('createGive', 'InviteCodeController@createGive');
     Route::get('inviLists', 'InviteCodeController@lists');
+    
+    Route::get('inList', 'InQueueController@lists');
+    Route::get('inAdd', 'InQueueController@add');
+    
+    Route::get('outList', 'OutQueueController@lists');
+    Route::get('outAdd', 'OutQueueCodeController@add');
 
     
 });

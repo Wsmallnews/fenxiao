@@ -18,7 +18,7 @@ class InviteCodeController extends CommonController {
 	 */
 	public function __construct()
 	{
-		$this->middleware('home');
+// 		$this->middleware('home');
 	}
 
     /**
@@ -56,12 +56,13 @@ class InviteCodeController extends CommonController {
 	    $library[] = '12345678901234567890123456';
 	    
 	    $success = true;
-	    InviteCode::beginTransaction();
+
+	    //InviteCode::beginTransaction();
 	    for($i = 0; $i < $num; $i++){
     	    do{
     	        //生成唯一验证码str
         	    $str = '';
-        	    for($i = 0; $j < 8; $j++ ){
+        	    for($j = 0; $j < 8; $j++ ){
         	        $type = mt_rand(0, 2);
         	        $first = mt_rand(0,25);
         	        $str .= substr($library[$type],$first,1);
@@ -81,13 +82,14 @@ class InviteCodeController extends CommonController {
     	        $success = false;
     	        break;
     	    }
+    	    echo $str;
 	    }
 	    
-	    if($success){
-	        InviteCode::commit();
-	    }else{
-	        InviteCode::rollback();
-	    }
+// 	    if($success){
+// 	        InviteCode::commit();
+// 	    }else{
+// 	        InviteCode::rollback();
+// 	    }
 
 	    return $success;
 	}
