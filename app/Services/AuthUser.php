@@ -37,7 +37,7 @@ class AuthUser implements AuthUserContract {
 	    Session::put('laravel_user_id',$id);
 	}
 	
-	//获取管理员信息
+	//获取用户信息
 	public function user(){
 	    $result = User::find(Session::get('laravel_user_id'));
 	    
