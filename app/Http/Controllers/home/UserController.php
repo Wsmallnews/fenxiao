@@ -47,7 +47,7 @@ class UserController extends CommonController {
         $user->parent_id = Session::get('laravel_user_id');
         
         if(isset($data['active'])){
-            //验证激活码;
+            //验证激活码，待完善
             Hp::checkInviCode($data['invi_code']);
         }
         
