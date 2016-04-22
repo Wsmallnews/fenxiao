@@ -19,7 +19,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">添加会员</h1>
+                    <h1 class="page-header">会员列表</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -28,54 +28,11 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                                                                        我的会员列表
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                            <th>CSS grade</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="gradeC">
-                                            <td>Misc</td>
-                                            <td>IE Mobile</td>
-                                            <td>Windows Mobile 6</td>
-                                            <td class="center">-</td>
-                                            <td class="center">C</td>
-                                        </tr>
-                                        <tr class="gradeC">
-                                            <td>Misc</td>
-                                            <td>PSP browser</td>
-                                            <td>PSP</td>
-                                            <td class="center">-</td>
-                                            <td class="center">C</td>
-                                        </tr>
-                                        <tr class="gradeU">
-                                            <td>Other browsers</td>
-                                            <td>All others</td>
-                                            <td>-</td>
-                                            <td class="center">-</td>
-                                            <td class="center">U</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <nav>
-                                <ul class="pagination">
-                                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                    <li class=""><a href="#">2 <span class="sr-only">(current)</span></a></li>
-                                    <li class=""><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                                </ul>
-                            </nav>
+                        <div class="panel-body" id="table_div">
+                            @include('home.user.li')
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -91,6 +48,24 @@
     @include('home.includes.loadjs')
     <script type="text/javascript" >
 
+    $("#pagination").on('click','li',function(){
+        var url = $(this).attr('href');
+        $.ajax({
+            url:url,
+            data:{},
+            type:'get',
+            success:function(r){
+                if(r.error == 0){
+                	$("#table_div").html(r.data.html);
+                }else{
+                    alert('获取失败');
+                }
+            }
+        });
+
+        //阻止a的href 跳转
+        return false;
+    })
     
     </script>
     

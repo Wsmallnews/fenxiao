@@ -6,6 +6,8 @@ use Request;
 use Validator;
 use Redirect;
 use AuthUser;
+use Session;
+use Response;
 
 class UserController extends CommonController {
 
@@ -25,9 +27,28 @@ class UserController extends CommonController {
 	 * @return Response
 	 */
 	public function lists() {
-	    return view('home.user.lists');
+// 	    $pageRow = Request::input('rows',15);
+$pageRow = 2;
+	    $user_id = Session::get('laravel_user_id');
+	    
+	    $where = array();
+	    
+        if(!empty($user_id)){
+            $where['parent_id'] = $user_id;
+        }
+
+        $user_list = User::where($where)->paginate($pageRow);
+
+	    if(Request::ajax()){
+	        
+	        $view = view('home.user.li',array('user_list' => $user_list));
+
+	        return Response::json(array('error'=>0,'data'=>array('html'=>$view->render())));
+	        
+	    }else{
+	        return view('home.user.lists',array('user_list' => $user_list));
+	    }
 	}
-	
 	
     public function add() {
         return view('home.user.add');
