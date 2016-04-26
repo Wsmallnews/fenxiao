@@ -13,7 +13,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($user_list as $list)
-                                        <tr class="gradeC" goods_id="{{$list->id}}">
+                                        <tr class="gradeC" user_id="{{$list->id}}">
                                             <td>{{$list->id}}</td>
                                             <td>{{$list->id}}</td>
                                             <td>{{$list->name}}</td>

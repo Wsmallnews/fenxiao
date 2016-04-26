@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>用户列表 - {{$l_web['web_name']}}</title>
+    <title>排队列表 - {{$l_web['web_name']}}</title>
     
 </head>
 
@@ -18,7 +18,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">会员列表</h1>
+                    <h1 class="page-header">排队列表</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -27,11 +27,11 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                                                                        我的会员列表
+                                                                        我的排队列表
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body" id="table_div">
-                            @include('home.user.li')
+                            @include('home.outQueue.li')
                         </div>
                         <!-- /.panel-body -->
                     </div>

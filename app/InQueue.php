@@ -16,7 +16,8 @@ class InQueue extends CommonModel{
     
     public static function addRoleMsg(){
         return [
-            'money.required' => '金额必填',
+            'money.required' => '排队金额必填',
+//             'money.min' => '金额最小为1500'
         ];
     }
 }

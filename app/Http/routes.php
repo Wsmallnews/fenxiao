@@ -53,10 +53,11 @@ Route::group(['prefix' => 'home', 'namespace' => 'home'], function()
     
     Route::get('inList', 'InQueueController@lists');
     Route::get('inAdd', 'InQueueController@add');
+    Route::post('inDoAdd', 'InQueueController@doAdd');
     
     Route::get('outList', 'OutQueueController@lists');
-    Route::get('outAdd', 'OutQueueCodeController@add');
-
+    Route::get('outAdd', 'OutQueueController@add');
+    Route::post('outDoAdd', 'OutQueueController@doAdd');
     
 });
 

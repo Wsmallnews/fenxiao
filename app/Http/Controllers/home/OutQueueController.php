@@ -9,6 +9,8 @@ use View;
 use Request;
 use Response;
 use Validator;
+use Redirect;
+use Session;
 
 class OutQueueController extends CommonController {
 
@@ -25,21 +27,26 @@ class OutQueueController extends CommonController {
     /**
      * 获取贡献队列列表
      */
-	public function lists(){
-	    $u_id = Session::get('laravel_user_id');
+	public function lists() {
+	    $pageRow = Request::input('rows',15);
 	    
-	    if(Request::ajax){
-	        $where = array();
-	        $where['u_id'] = $u_id;
-	        
-	        $list = OutQueue::where($where)->get();
-	        $r = Hp::rt('ok',1);
-	        $r['list'] = $list;
-	        Response::json($r);
+	    $user_id = Session::get('laravel_user_id');
+	     
+	    $where = array();
+
+	    $where['u_id'] = $user_id;
+
+	    $out_list = OutQueue::where($where)->paginate($pageRow);
+	
+	    if(Request::ajax()){
+	         
+	        $view = view('home.outQueue.li',array('out_list' => $out_list));
+	
+	        return Response::json(array('error'=>0,'data'=>array('html'=>$view->render())));
+	         
+	    }else{
+	        return view('home.outQueue.lists',array('out_list' => $out_list));
 	    }
-	    
-	    
-	    view('home.inQueue.lists');
 	}
 	
 	/**
@@ -61,7 +68,7 @@ class OutQueueController extends CommonController {
 	    
 	    $outQueue = new OutQueue();
 	    
-	    $outQueue->money = $money;
+	    $outQueue->money = $data['money'];
 	    $outQueue->u_id = Session::get('laravel_user_id');
 	    
 	    $result = $outQueue->save();

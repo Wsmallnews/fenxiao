@@ -9,6 +9,8 @@ use View;
 use Request;
 use Response;
 use Validator;
+use Redirect;
+use Session;
 
 class InQueueController extends CommonController {
 
@@ -23,23 +25,28 @@ class InQueueController extends CommonController {
 	}
 
     /**
-     * 获取贡献队列列表
+     * 获取收入队列列表
      */
-	public function lists(){
-	    $u_id = Session::get('laravel_user_id');
+	public function lists() {
+	    $pageRow = Request::input('rows',15);
 	    
-	    if(Request::ajax){
-	        $where = array();
-	        $where['u_id'] = $u_id;
+	    $user_id = Session::get('laravel_user_id');
+	     
+	    $where = array();
+
+	    $where['u_id'] = $user_id;
+
+	    $in_list = InQueue::where($where)->paginate($pageRow);
+	
+	    if(Request::ajax()){
 	         
-	        $list = InQueue::where($where)->get();
-	        $r = Hp::rt('ok',1);
-	        $r['list'] = $list;
-	        Response::json($r);
+	        $view = view('home.inQueue.li',array('in_list' => $in_list));
+	
+	        return Response::json(array('error'=>0,'data'=>array('html'=>$view->render())));
+	         
+	    }else{
+	        return view('home.inQueue.lists',array('in_list' => $in_list));
 	    }
-	    
-	    
-	    view('home.inQueue.lists');
 	}
 	
 	/**
@@ -52,7 +59,7 @@ class InQueueController extends CommonController {
 	
 	public function doAdd(){
 	    $data = Request::all();
-	    
+
 	    $validate = Validator::make($data,InQueue::addRole(),InQueue::addRoleMsg());
 	    
 	    if($validate->fails()){
@@ -61,7 +68,7 @@ class InQueueController extends CommonController {
 	    
 	    $inQueue = new InQueue();
 	    
-	    $inQueue->money = $money;
+	    $inQueue->money = $data['money'];
 	    $inQueue->u_id = Session::get('laravel_user_id');
 	    
 	    $result = $inQueue->save();
