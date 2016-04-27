@@ -11,6 +11,7 @@
 <!--     <script src="{{ asset('/plus/bootstrap/morrisjs/morris.min.js') }}"></script> -->
 <!--     <script src="{{ asset('/plus/bootstrap/js/morris-data.js') }}"></script> -->
     <script src="{{ asset('/js/web_base.js') }}"></script>
+    <script src="{{ asset('/js/list_item.js') }}"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('/plus/bootstrap/dist/js/sb-admin-2.js') }}"></script>

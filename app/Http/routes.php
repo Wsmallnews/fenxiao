@@ -63,7 +63,7 @@ Route::group(['prefix' => 'home', 'namespace' => 'home'], function()
 
 
 
-
+Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 

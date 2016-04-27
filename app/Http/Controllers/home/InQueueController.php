@@ -21,7 +21,7 @@ class InQueueController extends CommonController {
 	 */
 	public function __construct()
 	{
-// 		$this->middleware('home');
+		$this->middleware('home');
 	}
 
     /**

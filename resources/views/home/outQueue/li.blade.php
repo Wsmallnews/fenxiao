@@ -15,7 +15,7 @@
                                             <td>{{$list->id}}</td>
                                             <td>{{$list->u_id}}</td>
                                             <td>{{$list->money}}</td>
-                                            <td>@if($list->status eq 0)排队中 @else if($list->status eq 1) 已匹配 @else  @endif</td>
+                                            <td>@if($list->status == 0)排队中 @elseif($list->status == 1) 已匹配 @else 已完成 @endif</td>
                                             <td>{{$list->created_at}}</td>
                                             <td>{{$list->updated_at}}</td>
                                         </tr>

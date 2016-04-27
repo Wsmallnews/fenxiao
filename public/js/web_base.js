@@ -6,7 +6,7 @@ var l = {
 			dataType : 'JSON',
 			type:'post',
 			headers: {
-				'X-CSRF-TOKEN': $J('meta[name="_token"]').attr('content')
+				'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
 			},
 			success:function(){},
 			error:function(){}
@@ -17,5 +17,20 @@ var l = {
 		defaults['data']['timeStamp'] = (new Date()).getTime();
 
 		$.ajax(defaults);
-	}
+	},
+	parseFormJson : function(frm) {
+		var o = {};	
+		var a = $(frm).serializeArray(); 
+		$.each(a, function () { 
+			if (o[this.name] !== undefined) { 
+				if (!o[this.name].push) { 
+					o[this.name] = [o[this.name]]; 
+				} 
+				o[this.name].push(this.value || ''); 
+			} else { 
+				o[this.name] = this.value || ''; 
+			}
+		}); 
+		return o; 
+	},
 }

@@ -18,7 +18,7 @@ class HomeMiddleware {
 
 	    if(!AuthUser::check()){
 	        if($route != 'login' && $route != 'doLogin'){
-	            //return redirect('home/login');
+	            return redirect('home/login');
 	        }
 	    }else{
 	        if($route == 'login' || $route == 'doLogin'){

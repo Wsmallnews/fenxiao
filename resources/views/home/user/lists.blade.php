@@ -30,8 +30,19 @@
                                                                         我的会员列表
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body" id="table_div">
-                            @include('home.user.li')
+                        <div class="panel-body" id="list_div">
+                            <div id="search_div">
+                                <form class="form-inline" id="search_form">
+                                    <div class="form-group">
+                                        <label>用户名</label>
+                                        <input type="text" class="form-control" name="keyword" placeholder="关键字">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" id="search">搜索</button>
+                                </form>
+                            </div>
+                            <div id="table_div">
+                                @include('home.user.li')
+                            </div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -46,25 +57,32 @@
 
     @include('home.includes.loadjs')
     <script type="text/javascript" >
+list.page("id",'');
+//     $("#table_div").on('click','li.page_num',function(){
+//         var url = $(this).find('a').attr('href');
 
-    $("#pagination").on('click','li',function(){
-        var url = $(this).attr('href');
-        $.ajax({
-            url:url,
-            data:{},
-            type:'get',
-            success:function(r){
-                if(r.error == 0){
-                	$("#table_div").html(r.data.html);
-                }else{
-                    alert('获取失败');
-                }
-            }
-        });
+//         $.ajax({
+//             url:url,
+//             data:{},
+//             type:'get',
+//             success:function(r){
+//                 if(r.error == 0){
+//                 	$("#table_div").html(r.data.html);
+//                 }else{
+//                     alert('获取失败');
+//                 }
+//             }
+//         });
 
-        //阻止a的href 跳转
-        return false;
-    })
+//         //阻止a的href 跳转
+//         return false;
+//     })
+    
+//     $("#search").on('click',function(){
+//         var search_data = l.parseFormJson("#search_form");
+
+        
+//     })
     
     </script>
     

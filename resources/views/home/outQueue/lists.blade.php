@@ -47,8 +47,9 @@
     @include('home.includes.loadjs')
     <script type="text/javascript" >
 
-    $("#pagination").on('click','li',function(){
-        var url = $(this).attr('href');
+    $("#table_div ").on('click','li.page_num',function(){
+        var url = $(this).find('a').attr('href');
+
         $.ajax({
             url:url,
             data:{},
