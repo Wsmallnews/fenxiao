@@ -76,7 +76,7 @@ class BootstrapThreePresenter implements PresenterContract {
 	{
 		$rel = is_null($rel) ? '' : ' rel="'.$rel.'"';
 
-		return '<li class="page_num"><a href="'.$url.'"'.$rel.'>'.$page.'</a></li>';
+		return '<li class="page_num"><a href="javascript:void(0);" url="'.$url.'"'.$rel.'>'.$page.'</a></li>';
 	}
 
 	/**

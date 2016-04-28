@@ -57,33 +57,16 @@
 
     @include('home.includes.loadjs')
     <script type="text/javascript" >
-list.page("id",'');
-//     $("#table_div").on('click','li.page_num',function(){
-//         var url = $(this).find('a').attr('href');
 
-//         $.ajax({
-//             url:url,
-//             data:{},
-//             type:'get',
-//             success:function(r){
-//                 if(r.error == 0){
-//                 	$("#table_div").html(r.data.html);
-//                 }else{
-//                     alert('获取失败');
-//                 }
-//             }
-//         });
+    $("#table_div ").on('click','li.page_num',function(){
+    	var url = $(this).find('a').attr('url');
+    	list.page("#table_div",url);
+    });
 
-//         //阻止a的href 跳转
-//         return false;
-//     })
-    
-//     $("#search").on('click',function(){
-//         var search_data = l.parseFormJson("#search_form");
+    $("#search").on('click',function(){
+    	list.search("#table_div");
+    })
 
-        
-//     })
-    
     </script>
     
 </body>

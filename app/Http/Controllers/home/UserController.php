@@ -27,12 +27,16 @@ class UserController extends CommonController {
 	 * @return Response
 	 */
 	public function lists() {
-// 	    $pageRow = Request::input('rows',15);
-$pageRow = 2;
+	    $pageRow = Request::input('rows',15);
+
 	    $user_id = Session::get('laravel_user_id');
 	    
 	    $where = array();
 	    
+        if(!empty($user_id)){
+            $where['parent_id'] = $user_id;
+        }
+        
         if(!empty($user_id)){
             $where['parent_id'] = $user_id;
         }
